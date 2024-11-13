@@ -1,0 +1,9 @@
+{
+    "url": "amqp://bruja:4NdGJcOkcwipTumCmA6C.dev@137.184.170.149:9000",
+    "queue_email" : "EMAIL",
+    "queue_sms": "SMS",
+    "queue_logs": "LOGS",
+    "queue_audit": "AUDIT",
+    "prefetchCount": 10,
+    "timeNack":10000
+}

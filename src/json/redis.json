@@ -1,0 +1,5 @@
+{
+    "url": "redis://:82mBIASjeZTbhe0BaR6TqWBgm4u2eljrQ==@localhost:",
+    "urlRedContainer": "redis://:82mBIASjeZTbhe0BaR6TqWBgm4u2eljrQ==@20.84.48.225:9010",
+    "port": 10001
+}

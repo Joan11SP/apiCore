@@ -1,0 +1,24 @@
+{
+  "roles": {
+    "usuarioAutenticado": "usuarioAutenticado",
+    "externalUser": "externalUser",
+    "estadoPendiente": "EST_PRO_PENDIENTE",
+    "estadoAprobado": "EST_PRO_APROBADO",
+    "estadoPenApro": "EST_PEND_APRO"
+  },
+  "variables": {
+    "dev": true,
+    "longitud_pass_tmp": 8,
+    "longitud_user_tmp": 6,
+    "cifrado": false,
+    "msgServicioInactivo": "Por el momento el servicio no se encuentra activo, intenta más tarde.",
+    "timeLifeKeysCipher": 30,
+    "idWalletService": 4,
+    "urlDoc": "",
+    "env": "",
+    "stateInArrears": [""]
+  },
+  "endpointServices": {
+    "docCreatorUrl": "http://20.84.48.225:3636/apiDocsCreator/HtmlToPdf"
+  }
+}
