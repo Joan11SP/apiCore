@@ -1,4 +1,3 @@
-
 export class GeneralResponse
 {   
     code: string = "COD_OK";

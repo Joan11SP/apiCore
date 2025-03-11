@@ -1,6 +1,6 @@
 create database core;
 
-use core
+use core;
 
 create table partners
 (
@@ -36,6 +36,14 @@ create table accounts
 );
 -- insert into accounts (idAccount, numAccount, name, partnerId, typeAccount, acceptDebit, acceptCredit, availableBalance, blockedBalance, status)
 
+CREATE TABLE banks (
+    idBank INT PRIMARY KEY AUTO_INCREMENT,
+    bankCode VARCHAR(10) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL,
+    status TINYINT(1) DEFAULT 1, -- 1=Activo, 0=Inactivo
+    createAt DATETIME DEFAULT NOW()
+);
+
 create table transactions
 (
 	idTransaction				int auto_increment primary key,
@@ -51,8 +59,12 @@ create table transactions
 	reference					varchar(65),
 	identificationBenef			varchar(35),
 	nameBenef					varchar(60),
-	idBank						varchar(15) null
+	idBank						int
 );
+
+ALTER TABLE transactions
+ADD COLUMN status ENUM('Pending', 'Approved', 'Rejected', 'Failed', 'Cancelled', 'In Process', 'Successful', 'Refunded', 'Awaiting Validation', 'Confirmed') NOT NULL DEFAULT 'Pending';
+
 
 create table interbankTransaction
 (
@@ -64,14 +76,18 @@ create table interbankTransaction
 	value						double,
 	observation					varchar(25),
 	identificationDes			varchar(25),
-	nameDestiantion				varchar(35)
+	nameDestiantion				varchar(35),
 	accountType					char(2),
-	idBank						varchar(25),
+	idBank						int,
 	status						tinyint(1),
 	createAt					datetime default now()
 );
 
-
+INSERT INTO banks (bankCode, name, status)
+VALUES
+('001', 'Banco de Loja', 1),
+('002', 'Banco Pichincha', 1),
+('003', 'Banco Guayaquil', 1);
 
 INSERT INTO partners (identification, typeIdentification, names, lastName, mothersLastName, typePartner, phone, email, domicile, birthDate, createAt) VALUES('1851349145', 'CED', 'John', 'Doe', '', 'N', '(555) 555-1234', 'johndoe@example.com', '', '1973-01-22', '2024-10-30 04:35:42');
 INSERT INTO partners (identification, typeIdentification, names, lastName, mothersLastName, typePartner, phone, email, domicile, birthDate, createAt) VALUES('2341318394', 'CED', 'Jane', 'Smith', '', 'N', '(555) 555-5678', 'janesmith@example.com', '', '1983-02-22', '2024-10-30 04:35:42');
@@ -108,14 +124,17 @@ INSERT INTO partners (identification, typeIdentification, names, lastName, mothe
 INSERT INTO accounts (idAccount, numAccount, name, partnerId, typeAccount, acceptDebit, acceptCredit, availableBalance, blockedBalance, status, createAt, lastMovement) VALUES(10545, '7055075247', 'Test', 30, 1, 1, 1, 9938.0, 0.0, 'A', '2024-10-30 04:50:27', '2024-11-07 04:54:11');
 INSERT INTO accounts (idAccount, numAccount, name, partnerId, typeAccount, acceptDebit, acceptCredit, availableBalance, blockedBalance, status, createAt, lastMovement) VALUES(10547, '8621421376', 'Test 2', 28, 1, 1, 1, 137.0, 0.0, 'A', '2024-11-04 20:32:24', '2024-11-07 04:54:11');
 
-INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank) VALUES('-', 'TRANSFER', 10.5, '7055075247', '8621421376', 9959.0, 'Pruebas', '2024-11-07 04:49:27', '192.168.10.70', '464564', '0914629687', 'Liam Brown', NULL);
-INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank) VALUES('+', 'TRANSFER', 10.5, '8621421376', '7055075247', 116.0, 'Pruebas', '2024-11-07 04:49:27', '192.168.10.70', '464564', '0914629687', 'Liam Brown', NULL);
-INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank) VALUES('-', 'TRANSFER', 10.5, '7055075247', '8621421376', 9948.5, 'Pruebas', '2024-11-06 23:51:42.144000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', NULL);
-INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank) VALUES('+', 'TRANSFER', 10.5, '8621421376', '7055075247', 126.5, 'Pruebas', '2024-11-06 23:51:42.144000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', NULL);
-INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank) VALUES('-', 'TRANSFER', 10.5, '7055075247', '8621421376', 9938.0, 'Pruebas', '2024-11-06 23:54:11.544000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', NULL);
-INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank) VALUES('+', 'TRANSFER', 10.5, '8621421376', '7055075247', 137.0, 'Pruebas', '2024-11-06 23:54:11.545000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', NULL);
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank, status) VALUES('-', 'TRANSFER', 10.5, '7055075247', '8621421376', 9959.0, 'Pruebas', '2024-11-07 04:49:27', '192.168.10.70', '464564', '0914629687', 'Liam Brown', 1);
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank, status) VALUES('+', 'TRANSFER', 10.5, '8621421376', '7055075247', 116.0, 'Pruebas', '2024-11-07 04:49:27', '192.168.10.70', '464564', '0914629687', 'Liam Brown', 2);
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank, status) VALUES('-', 'TRANSFER', 10.5, '7055075247', '8621421376', 9948.5, 'Pruebas', '2024-11-06 23:51:42.144000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', 3);
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank,status) VALUES('+', 'TRANSFER', 10.5, '8621421376', '7055075247', 126.5, 'Pruebas', '2024-11-06 23:51:42.144000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', 1);
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank, status) VALUES('-', 'TRANSFER', 10.5, '7055075247', '8621421376', 9938.0, 'Pruebas', '2024-11-06 23:54:11.544000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', 2);
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank, status) VALUES('+', 'TRANSFER', 10.5, '8621421376', '7055075247', 137.0, 'Pruebas', '2024-11-06 23:54:11.545000000', '192.168.10.70', '464564', '0914629687', 'Liam Brown', 1);
 
 
+INSERT INTO interbankTransaction (type, identificationOrigin, nameOrigin, accountOrigin, value, observation, identificationDes, nameDestiantion, accountType, idBank, status)
+VALUES('TRANSFERENCIA', '1234567890', 'Juan Pérez', '123-456-789', 300, 'Pago de servicios', '0987654321', 'María González', 'CC', 3, 0);
 
 
-
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank, status) VALUES('-', 'TRANSFER', 10.5, '7055075247', '8621421376', 9938.0, 'Pruebas', '2024-11-06 23:54:11.544000000', '192.168.10.70', '1234', '0914629687', 'Liam Brown', 2, 'Approved');
+INSERT INTO transactions (sign, typeTransaction, value, accountNumber, affectedAccountNumber, balance, observation, createAt, connectionIp, reference, identificationBenef, nameBenef, idBank, status) VALUES('+', 'TRANSFER', 10.5, '8621421376', '7055075247', 137.0, 'Pruebas', '2024-11-06 23:54:11.545000000', '192.168.10.70', '1234', '0914629687', 'Liam Brown', 1,'Approved' );

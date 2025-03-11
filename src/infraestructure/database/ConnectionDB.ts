@@ -24,8 +24,8 @@ export class ConnectionDB
                     user: "root",
                     host: "localhost",
                     database: "core",
-                    password: "bruja12345",
-                    port: 3600,
+                    password: "",
+                    port: 3306,
                     connectionLimit: 50,
                     multipleStatements: true
                 }

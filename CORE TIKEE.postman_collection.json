@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "dafb9d1c-fb17-48fb-a449-c5aef245bd0a",
+		"_postman_id": "07e8ea6d-38d5-4faf-8250-5cf2316bdf92",
 		"name": "CORE TIKEE",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21695920"
+		"_exporter_id": "33171556"
 	},
 	"item": [
 		{
@@ -193,101 +193,6 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": [\n        {\n            \"numAccount\": \"7055075247\",\n            \"typeAccount\": 1,\n            \"acceptDebit\": 1,\n            \"acceptCredit\": 1,\n            \"availableBalance\": 9980,\n            \"blockedBalance\": 0,\n            \"names\": \"Stefan Kupidura \",\n            \"email\": \"stefankupidura@example.com\"\n        }\n    ],\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
-				}
-			]
-		},
-		{
-			"name": "GET INFO SOCIO",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"identificationNumber\": \"1003134828\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/core/getInfoSocio",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"core",
-						"getInfoSocio"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "OK",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"identificationNumber\": \"1003134828\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/api/core/getInfoSocio",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"api",
-								"core",
-								"getInfoSocio"
-							]
-						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "354"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"162-tp3KBYa24wUKg/6oC62vT34FLgM\""
-						},
-						{
-							"key": "Date",
-							"value": "Tue, 05 Nov 2024 01:44:35 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": {\n        \"idPartner\": 30,\n        \"identification\": \"1003134828\",\n        \"typeIdentification\": \"CED\",\n        \"names\": \"Stefan\",\n        \"lastName\": \"Kupidura\",\n        \"mothersLastName\": \"\",\n        \"typePartner\": \"N\",\n        \"phone\": \"(555) 555-1234\",\n        \"email\": \"stefankupidura@example.com\",\n        \"domicile\": \"\",\n        \"birthDate\": \"1978-12-25T05:00:00.000Z\"\n    },\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
 				}
 			]
 		},
@@ -573,6 +478,558 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": {\n        \"typeAccount\": 1,\n        \"acceptDebit\": 1,\n        \"acceptCredit\": 1,\n        \"names\": \"Liam Brown \",\n        \"identification\": \"0914629687\",\n        \"email\": \"liambrown@example.com\"\n    },\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "getTransferHistory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"7055075247\",\r\n    \"startDate\": \"2024-01-01\",\r\n    \"endDate\": \"2024-11-30\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/core/getTransferHistory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"core",
+						"getTransferHistory"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountNumber\": \"7055075247\",\r\n    \"startDate\": \"2024-01-01\",\r\n    \"endDate\": \"2024-11-30\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/core/getTransferHistory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"core",
+								"getTransferHistory"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2090"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"82a-QisXhjfk2pgRl6YgGeC33n82bKA\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Jan 2025 15:37:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": [\n        {\n            \"idTransaction\": 1,\n            \"sourceAccount\": \"7055075247\",\n            \"destinationAccount\": \"8621421376\",\n            \"amountTransferred\": 10.5,\n            \"transactionDate\": \"2024-11-07 04:49:27\",\n            \"typeTransaction\": \"TRANSFER\",\n            \"observation\": \"Pruebas\",\n            \"reference\": \"464564\",\n            \"beneficiaryIdentification\": \"0914629687\",\n            \"beneficiaryName\": \"Liam Brown\",\n            \"idBank\": 1,\n            \"transactionType\": \"Enviada\"\n        },\n        {\n            \"idTransaction\": 2,\n            \"sourceAccount\": \"8621421376\",\n            \"destinationAccount\": \"7055075247\",\n            \"amountTransferred\": 10.5,\n            \"transactionDate\": \"2024-11-07 04:49:27\",\n            \"typeTransaction\": \"TRANSFER\",\n            \"observation\": \"Pruebas\",\n            \"reference\": \"464564\",\n            \"beneficiaryIdentification\": \"0914629687\",\n            \"beneficiaryName\": \"Liam Brown\",\n            \"idBank\": 2,\n            \"transactionType\": \"Recibida\"\n        },\n        {\n            \"idTransaction\": 6,\n            \"sourceAccount\": \"8621421376\",\n            \"destinationAccount\": \"7055075247\",\n            \"amountTransferred\": 10.5,\n            \"transactionDate\": \"2024-11-06 23:54:11\",\n            \"typeTransaction\": \"TRANSFER\",\n            \"observation\": \"Pruebas\",\n            \"reference\": \"464564\",\n            \"beneficiaryIdentification\": \"0914629687\",\n            \"beneficiaryName\": \"Liam Brown\",\n            \"idBank\": 1,\n            \"transactionType\": \"Recibida\"\n        },\n        {\n            \"idTransaction\": 5,\n            \"sourceAccount\": \"7055075247\",\n            \"destinationAccount\": \"8621421376\",\n            \"amountTransferred\": 10.5,\n            \"transactionDate\": \"2024-11-06 23:54:11\",\n            \"typeTransaction\": \"TRANSFER\",\n            \"observation\": \"Pruebas\",\n            \"reference\": \"464564\",\n            \"beneficiaryIdentification\": \"0914629687\",\n            \"beneficiaryName\": \"Liam Brown\",\n            \"idBank\": 2,\n            \"transactionType\": \"Enviada\"\n        },\n        {\n            \"idTransaction\": 3,\n            \"sourceAccount\": \"7055075247\",\n            \"destinationAccount\": \"8621421376\",\n            \"amountTransferred\": 10.5,\n            \"transactionDate\": \"2024-11-06 23:51:42\",\n            \"typeTransaction\": \"TRANSFER\",\n            \"observation\": \"Pruebas\",\n            \"reference\": \"464564\",\n            \"beneficiaryIdentification\": \"0914629687\",\n            \"beneficiaryName\": \"Liam Brown\",\n            \"idBank\": 3,\n            \"transactionType\": \"Enviada\"\n        },\n        {\n            \"idTransaction\": 4,\n            \"sourceAccount\": \"8621421376\",\n            \"destinationAccount\": \"7055075247\",\n            \"amountTransferred\": 10.5,\n            \"transactionDate\": \"2024-11-06 23:51:42\",\n            \"typeTransaction\": \"TRANSFER\",\n            \"observation\": \"Pruebas\",\n            \"reference\": \"464564\",\n            \"beneficiaryIdentification\": \"0914629687\",\n            \"beneficiaryName\": \"Liam Brown\",\n            \"idBank\": 1,\n            \"transactionType\": \"Recibida\"\n        }\n    ],\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "getAccounts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"accountNumber\": \"7055075247\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/core/getAccounts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"core",
+						"getAccounts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"numAccount\": \"7055075247\"\r\n\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/core/getAccounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"core",
+								"getAccounts"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "416"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a0-YpL2lqWGdn2eyd29b8dwVLdVE4s\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Jan 2025 15:44:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": [\n        {\n            \"idAccount\": 10545,\n            \"numAccount\": \"7055075247\",\n            \"accountName\": \"Test\",\n            \"typeAccount\": 1,\n            \"availableBalance\": 9917,\n            \"blockedBalance\": 0,\n            \"lastMovement\": \"2025-01-09T15:32:18.000Z\",\n            \"status\": \"A\",\n            \"idPartner\": 30,\n            \"identification\": \"1003134828\",\n            \"names\": \"Stefan\",\n            \"lastName\": \"Kupidura\",\n            \"email\": \"stefankupidura@example.com\",\n            \"phone\": \"(555) 555-1234\"\n        }\n    ],\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "get_partner_cedula",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificationNumber\": \"1003134828\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/core/getInfoSocio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"core",
+						"getInfoSocio"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identificationNumber\": \"1003134828\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/core/getInfoSocio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"core",
+								"getInfoSocio"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "354"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"162-tp3KBYa24wUKg/6oC62vT34FLgM\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 11 Mar 2025 14:36:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": {\n        \"idPartner\": 30,\n        \"identification\": \"1003134828\",\n        \"typeIdentification\": \"CED\",\n        \"names\": \"Stefan\",\n        \"lastName\": \"Kupidura\",\n        \"mothersLastName\": \"\",\n        \"typePartner\": \"N\",\n        \"phone\": \"(555) 555-1234\",\n        \"email\": \"stefankupidura@example.com\",\n        \"domicile\": \"\",\n        \"birthDate\": \"1978-12-25T05:00:00.000Z\"\n    },\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "getConsolidatedBalance",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"accountNumber\":\"7055075247\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/core/getConsolidatedBalance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"core",
+						"getConsolidatedBalance"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"accountNumber\":\"7055075247\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/core/getConsolidatedBalance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"core",
+								"getConsolidatedBalance"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "206"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ce-rm30h+FcNPd/HLdIwuprMvgcJIg\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Jan 2025 15:44:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": {\n        \"numAccount\": \"7055075247\",\n        \"availableBalance\": 9917,\n        \"blockedBalance\": 0,\n        \"totalTransferred\": 0,\n        \"consolidatedBalance\": 9917\n    },\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "getBanks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/core/getBanks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"core",
+						"getBanks"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/core/getBanks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"core",
+								"getBanks"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "384"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"180-qQWkukmXM7joxAOS02NB/hr2kYA\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 23 Jan 2025 15:48:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": [\n        {\n            \"idBank\": 1,\n            \"bankCode\": \"001\",\n            \"name\": \"Banco de Loja\",\n            \"status\": 1,\n            \"createAt\": \"2024-12-18 10:35:11\"\n        },\n        {\n            \"idBank\": 3,\n            \"bankCode\": \"003\",\n            \"name\": \"Banco Guayaquil\",\n            \"status\": 1,\n            \"createAt\": \"2024-12-18 10:35:11\"\n        },\n        {\n            \"idBank\": 2,\n            \"bankCode\": \"002\",\n            \"name\": \"Banco Pichincha\",\n            \"status\": 1,\n            \"createAt\": \"2024-12-18 10:35:11\"\n        }\n    ],\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
+				}
+			]
+		},
+		{
+			"name": "getTransferStatus",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"reference\": \"1234\"  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/core/getTransferStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"core",
+						"getTransferStatus"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"reference\": \"1234\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/core/getTransferStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"core",
+								"getTransferStatus"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "453"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c5-6iIgemK6OjhO++4JEjXyHSIpOT0\""
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 29 Jan 2025 17:08:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"code\": \"COD_OK\",\n    \"result\": [\n        {\n            \"idTransaction\": 11,\n            \"status\": \"Approved\",\n            \"createAt\": \"2024-11-06 23:54:11\",\n            \"sender_account\": \"7055075247\",\n            \"receiver_account\": \"8621421376\",\n            \"transfer_value\": 10.5,\n            \"observation\": \"Pruebas\"\n        },\n        {\n            \"idTransaction\": 12,\n            \"status\": \"Approved\",\n            \"createAt\": \"2024-11-06 23:54:11\",\n            \"sender_account\": \"8621421376\",\n            \"receiver_account\": \"7055075247\",\n            \"transfer_value\": 10.5,\n            \"observation\": \"Pruebas\"\n        }\n    ],\n    \"info\": \"El proceso se realizó correctamente.\",\n    \"status\": true\n}"
 				}
 			]
 		}

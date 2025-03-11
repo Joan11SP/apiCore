@@ -10,7 +10,11 @@ import { GetInfoSocioHandler } from './application/consolidatedPosition/infoSoci
 import { GetPosicionConsolidadaHandler } from './application/posicionConsolidada/getPosicionConsolidadaHandler';
 import { ValidateInternalAccountHandler } from './application/transacctions/validateInternalAccount/validateInternalAccountHandler';
 import { GetMovementsHandler } from './application/consolidatedPosition/getMovements/getMovementsHandler';
-
+import { GetAccountsHandler } from './application/accounts/getAccountsHandler';
+import { GetTransferHandler } from './application/transfer_history/getTransferHandler';
+import { GetConsolidatedBalanceHandler } from './application/posicionConsolidada/getConsolidatedBalanceHandler';
+import { GetBanksHandler } from './application/bankingentities/getbanksHandler';
+import { GetTransferStatusHandler } from './application/getransferStatus/getransferStatus';
 @Module({
   imports: [],
   providers:
@@ -22,6 +26,11 @@ import { GetMovementsHandler } from './application/consolidatedPosition/getMovem
       GetPosicionConsolidadaHandler,
       ValidateInternalAccountHandler,
       GetMovementsHandler,
+      GetAccountsHandler,
+      GetTransferHandler,
+      GetConsolidatedBalanceHandler,
+      GetBanksHandler,
+      GetTransferStatusHandler,
 
       { provide: 'ConnectionDB', useClass: ConnectionDB },
       { provide: 'ITransactionsDB', useClass: TransactionsDB},
@@ -42,7 +51,12 @@ export class AppModule
       private readonly GetInfoSocioHandler: GetInfoSocioHandler,
       private readonly GetPosicionConsolidadaHandler: GetPosicionConsolidadaHandler,
       private readonly ValidateInternalAccountHandler: ValidateInternalAccountHandler,
-      private readonly GetMovementsHandler: GetMovementsHandler
+      private readonly GetMovementsHandler: GetMovementsHandler,
+      private readonly GetAccountsHandler: GetAccountsHandler,
+      private readonly GetTransferHandler: GetTransferHandler,
+      private readonly GetConsolidatedBalanceHandler: GetConsolidatedBalanceHandler,
+      private readonly GetBanksHandler: GetBanksHandler,
+      private readonly GetTransferStatusHandler:GetTransferStatusHandler,
     )
   {
     this.serviceLocator.register('InternalTransactionHandler', this.InternalTransactionHandler);
@@ -51,6 +65,13 @@ export class AppModule
     this.serviceLocator.register('GetPosicionConsolidadaHandler', this.GetPosicionConsolidadaHandler);
     this.serviceLocator.register('ValidateInternalAccountHandler', this.ValidateInternalAccountHandler);
     this.serviceLocator.register('GetMovementsHandler', this.GetMovementsHandler);
+    this.serviceLocator.register('GetAccountsHandler', this.GetAccountsHandler);
+    this.serviceLocator.register('GetTransferHandler', this.GetTransferHandler);
+    this.serviceLocator.register('GetConsolidatedBalanceHandler', this.GetConsolidatedBalanceHandler);
+    this.serviceLocator.register('GetBanksHandler', this.GetBanksHandler);
+    this.serviceLocator.register('GetTransferStatusHandler', this.GetTransferStatusHandler);
+
+
   }
 
 }

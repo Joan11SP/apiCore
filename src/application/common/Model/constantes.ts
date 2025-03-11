@@ -1,4 +1,3 @@
-
 export class Constantes
 {
     public static keyRedisNotFound: string = 'KEYS_NOT_FOUND';
